@@ -1,10 +1,9 @@
 package com.gfg.yogi.spring5gettingstarted.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Author {
@@ -22,6 +21,9 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    @ManyToMany(mappedBy = "authors")
+    private Set<Book> books  = new HashSet<>();
 
     public Long getId() {
         return id;
